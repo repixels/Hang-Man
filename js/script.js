@@ -295,9 +295,10 @@ play= function(catIndex) {
 
 
 function showData(categoryId) {
-  $('#divCon #a1').hide();
-                $('#divCon #a2').show();
-               // alert("show" + categoryId);
+  $('#divCon #a1').slideUp(700);
+  $('#divCon #a2').slideDown(400);
+
+  //              alert("show" + categoryId);
                 play(categoryId);
 
 }
