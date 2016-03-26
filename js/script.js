@@ -233,9 +233,7 @@ play = function(catIndex) {
     if (chosenCategory.length > 0) {
       var size = (chosenCategory.length > 10) ? 10 : chosenCategory.length;
 
-      var index = Math.floor(Math.random() * size); ///test
-      alert(chosenCategory.length);
-
+      var index = Math.floor(Math.random() * size); 
 
       selectedElement = chosenCategory[index];
 
