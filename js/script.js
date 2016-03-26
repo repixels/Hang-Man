@@ -312,18 +312,11 @@ play = function(catIndex) {
 
 
 function showData(categoryId) {
-<<<<<<< HEAD
   $('#divCon #a1').slideUp(700);
   $('#divCon #a2').slideDown(400);
 
   //              alert("show" + categoryId);
                 play(categoryId);
-=======
-  $('#divCon #a1').hide();
-  $('#divCon #a2').show();
-  // alert("show" + categoryId);
-  play(categoryId);
->>>>>>> refs/remotes/origin/master
 
 }
 window.onload = function() {
