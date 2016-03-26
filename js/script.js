@@ -117,6 +117,7 @@ play = function(catIndex) {
   var buttons = function() {
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
+    myButtons.innerHTML="";
 
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
@@ -145,6 +146,7 @@ play = function(catIndex) {
   result = function() {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
+    wordHolder.innerHTML="";
 
     for (var i = 0; i < word.length; i++) {
       correct.setAttribute('id', 'my-word');
@@ -234,7 +236,7 @@ play = function(catIndex) {
       var size = (chosenCategory.length > 10) ? 10 : chosenCategory.length;
 
       var index = Math.floor(Math.random() * size); ///test
-      alert(chosenCategory.length);
+      
 
 
       selectedElement = chosenCategory[index];
@@ -260,20 +262,22 @@ play = function(catIndex) {
 
       word = selectedElement.getWord();
       console.log(word);
-      buttons();
+      
 
-      geusses = [];
+      
+    } else {
+      $('#divCon #a2').hide();
+      $('#divCon #a1').show();
+
+    }
+    geusses = [];
       lives = 10;
       counter = 0;
       space = 0;
       result();
       comments();
       selectCat();
-    } else {
-      $('#divCon #a2').hide();
-      $('#divCon #a1').show();
-
-    }
+      buttons();
   }
 
   play(catIndex);
