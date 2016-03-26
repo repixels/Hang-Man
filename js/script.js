@@ -235,8 +235,7 @@ play = function(catIndex) {
     if (chosenCategory.length > 0) {
       var size = (chosenCategory.length > 10) ? 10 : chosenCategory.length;
 
-      var index = Math.floor(Math.random() * size); ///test
-      
+      var index = Math.floor(Math.random() * size); 
 
 
       selectedElement = chosenCategory[index];
@@ -316,10 +315,11 @@ play = function(catIndex) {
 
 
 function showData(categoryId) {
-  $('#divCon #a1').hide();
-  $('#divCon #a2').show();
-  // alert("show" + categoryId);
-  play(categoryId);
+  $('#divCon #a1').slideUp(700);
+  $('#divCon #a2').slideDown(400);
+
+  //              alert("show" + categoryId);
+                play(categoryId);
 
 }
 window.onload = function() {
