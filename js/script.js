@@ -168,7 +168,9 @@ play= function(catIndex) {
     showLives.innerHTML = "You have " + lives + " lives";
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
-      alert("game over action");
+     //  alert("game over action");
+       $('#divCon #a2').hide();
+       $('#divCon #a1').show();
       //
     }
     for (var i = 0; i < geusses.length; i++) {
