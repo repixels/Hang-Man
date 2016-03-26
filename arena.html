@@ -5,12 +5,33 @@
         <title>JavaScript Hangman game</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="css/style.css">
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class="container vertical-center">
-          
+        <div id="divCon" class="container vertical-center">
+         
+  <div id="a1">
+      <div class="container vertical-center">
+
+          <div class="row">
+            <div class="col-lg-12">
+                <h1>Hangm_n</h1>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <h2>Choose your category ...</h2>
+                <button id="java" class="ch" onclick="showData(0)">Java</button>
+                <button id="sql" class="ch" onclick="showData(1)">SQL</button>
+                <button id="html" class="ch" onclick="showData(2)">HTML</button>
+            </div>
+          </div>
+
+      </div>
+    </div> 
+      <div id="a2">
           <div class="row">
             <div class="col-lg-12">
                 <p id="catagoryName"></p>
@@ -45,12 +66,29 @@
           </div>
 
         </div>
+        </div>
+
       
         <script src="js/script.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/seekbar.js"></script>
-        <script type="text/javascript">    
-          
+ 
+
+        <script type="text/javascript">
+              $(function () {
+              // $('.container vertical-center #a2').hide();
+              // $('.container vertical-center #a1').show();
+
+
+            // $('.container vertical-center #a1 .row div:first-child #java').click(
+            //   function () {
+            //     $('.container vertical-center #a1').hide();
+            //     $('.container vertical-center #a2').show();
+            //   }
+            // ); 
+             });
+                
+</script>
         </script>
 
     </body>
