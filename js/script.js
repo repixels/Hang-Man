@@ -58,7 +58,7 @@ play= function(catIndex) {
     new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "zoo.jpg")
   ];
 
-  sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'values', 'itemName', 'room', 'update', 'set', 'lamp',
+  sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'room', 'update', 'set', 'lamp',
     'where', '=', 'bird', 'item', 'sofa', 'level', '1', '4', 'purple', 'count', '(', ')', 'animal', 'birds', 'bird', 'color', 'blue', 'red', 'door', 'SolarSystem', '*', 'pencilCase'
   ];
 
@@ -133,11 +133,11 @@ play= function(catIndex) {
   // Select Catagory
   var selectCat = function() {
     if (chosenCategory === categories[0]) {
-      catagoryName.innerHTML = "The Chosen Category Is JAVA";
+      catagoryName.innerHTML = "The Chosen Category Is Premier League Football Teams";
     } else if (chosenCategory === categories[1]) {
-      catagoryName.innerHTML = "The Chosen Category Is SQL";
+      catagoryName.innerHTML = "The Chosen Category Is Films";
     } else if (chosenCategory === categories[2]) {
-      catagoryName.innerHTML = "The Chosen Category Is HTML";
+      catagoryName.innerHTML = "The Chosen Category Is Cities";
     }
   }
 
@@ -218,7 +218,6 @@ play= function(catIndex) {
   // Play
   play = function(categoryIndex) {
      
-     seekbar.setValue(0);
     // alphabet = sqlAlphabet;
     categories.push(javaWords);
     categories.push(sqlWords);
