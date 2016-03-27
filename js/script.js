@@ -295,6 +295,9 @@ this.innerHTML='';
       comments();
       selectCat();
       buttons();
+      var catagoryIndex = categories.indexOf(chosenCategory);
+      var hintIndex = chosenCategory.indexOf(word);
+      showClue.innerHTML = "Clue: - " + selectedElement.getHint();
   }
 
   play(catIndex);
