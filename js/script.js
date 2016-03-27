@@ -304,25 +304,25 @@ this.innerHTML='';
 
   // Hint
 
-  hint.onclick = function() {
+  // hint.onclick = function() {
 
 
-    switch (catIndex) {
-      case 0:
-        showClue.innerHTML = "Clue: - " + selectedElement.getHint();
-        break;
-      case 1:
+  //   switch (catIndex) {
+  //     case 0:
+  //       showClue.innerHTML = "Clue: - " + selectedElement.getHint();
+  //       break;
+  //     case 1:
 
-        break;
-      case 2:
-        var divHtml = document.getElementById('hintDiv');
+  //       break;
+  //     case 2:
+  //       var divHtml = document.getElementById('hintDiv');
 
-        divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
+  //       divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
 
-        break;
-    }
+  //       break;
+  //   }
 
-  };
+  // };
 
   // Reset
 
