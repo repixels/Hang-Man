@@ -198,8 +198,23 @@ play = function(catIndex) {
   check = function() {
     list.onclick = function() {
       var geuss = (this.innerHTML);
+      var strike;
+          var element1;
+
+          strike=  document.createElement('span');
+          strike.setAttribute('style','color:red;text-decoration:line-through');
+
+        element1= document.createElement('span');
+        element1.setAttribute('style','color:black');
       this.setAttribute("class", "active");
       this.onclick = null;
+      var x=document.createTextNode(this.innerHTML);
+
+this.innerHTML='';
+
+   this.appendChild(strike);
+   strike.appendChild(element1);
+   element1.appendChild(x);
       for (var i = 0; i < word.length; i++) {
         if (word[i].toUpperCase() === geuss.toUpperCase()) {
           geusses[i].innerHTML = geuss;
@@ -235,7 +250,7 @@ play = function(catIndex) {
     if (chosenCategory.length > 0) {
       var size = (chosenCategory.length > 10) ? 10 : chosenCategory.length;
 
-      var index = Math.floor(Math.random() * size); 
+      var index = Math.floor(Math.random() * size);
 
 
       selectedElement = chosenCategory[index];
@@ -255,15 +270,15 @@ play = function(catIndex) {
           break;
       }
 
-      //remove current selection from categories 
+      //remove current selection from categories
       chosenCategory.splice(index, 1);
 
 
       word = selectedElement.getWord();
       console.log(word);
-      
 
-      
+
+
     } else {
       $('#divCon #a2').hide();
       $('#divCon #a1').show();
