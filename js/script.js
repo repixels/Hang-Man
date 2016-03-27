@@ -297,7 +297,7 @@ this.innerHTML='';
       buttons();
       var catagoryIndex = categories.indexOf(chosenCategory);
       var hintIndex = chosenCategory.indexOf(word);
-      showClue.innerHTML = "Clue: - " + selectedElement.getHint();
+      showClue.innerHTML = selectedElement.getHint();
   }
 
   play(catIndex);
