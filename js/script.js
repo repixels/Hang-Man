@@ -208,13 +208,16 @@ play = function(catIndex) {
         element1.setAttribute('style','color:black');
       this.setAttribute("class", "active");
       this.onclick = null;
-      var x=document.createTextNode(this.innerHTML);
+      // var x=document.createTextNode(this.innerHTML);
+      var strikedElement=document.createElement('p');
+      strikedElement.setAttribute('style','font-size:16px;');
+      strikedElement.innerHTML = this.innerHTML;
 
 this.innerHTML='';
 
    this.appendChild(strike);
    strike.appendChild(element1);
-   element1.appendChild(x);
+   element1.appendChild(strikedElement);
       for (var i = 0; i < word.length; i++) {
         if (word[i].toUpperCase() === geuss.toUpperCase()) {
           geusses[i].innerHTML = geuss;
