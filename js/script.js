@@ -1,9 +1,6 @@
 var seekbar;
 
 play = function(catIndex) {
-
-
-
   //element
   function element(word, hint) {
     this.word = word;
@@ -39,16 +36,16 @@ play = function(catIndex) {
     new element("Object", "default parent of all classes")
   ];
 
-  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'itemName', '=', 'sofa'], "room.jpg"),
-    new element(['select', 'bird', 'from', 'birds', 'where', 'color', '=', 'blue'], "bird.jpg"),
-    new element(['select', '*', 'from', 'SolarSystem', 'where', 'id', '<', '4'], "solarSystem.jpg"),
-    new element(['select', '*', 'from', 'pencilCase'], "pencilCase.jpg"),
-    new element(['insert', 'into', 'room', 'values', '(', 'lamp', ')'], "room.jpg"),
-    new element(['update', 'birds', 'set', 'birdColor', '=', 'red', 'where', 'id', '=', '1'], "bird.jpg"),
-    new element(['insert', 'into', 'SolarSystem', 'values', '(', '6', ',', 'Saturn', ')'], "solarSystem.jpg"),
-    new element(['update', 'pencilCase', 'set', 'pencolor', '=', 'pink', 'where', 'Id', '=', '1'], "pencilCase.jpg"),
-    new element(['insert', 'into', 'Zoo', 'values', '(', 'kangaroo', ')'], "zoo.jpg"),
-    new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "zoo.jpg")
+  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'itemName', '=', 'sofa'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['select', 'bird', 'from', 'birds', 'where', 'color', '=', 'blue'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['select', '*', 'from', 'SolarSystem', 'where', 'id', '<', '4'], "<img src='img/hints/solar-hidden.jpg' class='image-responsive'/>"),
+    new element(['select', '*', 'from', 'pencilCase'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'room', 'values', '(', 'lamp', ')'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['update', 'birds', 'set', 'birdColor', '=', 'red', 'where', 'id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'SolarSystem', 'values', '(', '6', ',', 'Saturn', ')'], "<img src='img/hints/solar-normal.jpg' class='image-responsive'/>"),
+    new element(['update', 'pencilCase', 'set', 'pencolor', '=', 'pink', 'where', 'Id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'Zoo', 'values', '(', 'kangaroo', ')'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>"),
+    new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>")
   ];
 
   sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'values', 'itemName', 'room', 'update', 'set', 'lamp',
@@ -149,7 +146,7 @@ play = function(catIndex) {
         guess.innerHTML = "-";
         space = 1;
       } else {
-        guess.innerHTML = "_";
+        guess.innerHTML = "______";
       }
 
       geusses.push(guess);
@@ -160,27 +157,17 @@ play = function(catIndex) {
 
   // Show lives
   comments = function() {
-    showLives.innerHTML = "You have " + lives + " lives";
+    
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
       //  alert("game over action");
       $('#divCon #a2').hide();
       $('#divCon #a1').show();
-      //
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        
-        showLives.innerHTML = "You Win!";
-         // showClue.innerHTML = "";
+        celebration();
         $('#next').show();
-
-        //   if (chosenCategory.length <= 0) {
-        //     $('#divCon #a2').hide();
-        //     $('#divCon #a1').show();
-
-        // } 
-        
       }
     }
   }
@@ -202,7 +189,7 @@ play = function(catIndex) {
       this.onclick = null;
       // var x=document.createTextNode(this.innerHTML);
       var strikedElement=document.createElement('p');
-      strikedElement.setAttribute('style','font-size:16px;');
+      strikedElement.setAttribute('class','stripped-text');
       strikedElement.innerHTML = this.innerHTML;
 
     this.innerHTML='';
@@ -219,7 +206,11 @@ play = function(catIndex) {
         }
       }
       var j = (word.indexOf(geuss));
-      if (j === -1) {
+      if (j === -1)
+      {
+        $('#heart'+lives).removeClass('heart');
+        $('#heart'+lives).addClass('end');
+
         lives -= 1;
         comments();
       } else {
@@ -272,6 +263,14 @@ play = function(catIndex) {
 
       word = selectedElement.getWord();
       console.log(word);
+      var livesDiv = document.getElementById('lives');
+      livesDiv.innerHTML="";
+      for (var i = 1; i <= 6; i++) {
+      var heart = document.createElement('div')
+      heart.setAttribute('class','heart');
+      heart.setAttribute('id','heart'+i)
+      livesDiv.appendChild(heart)
+    }
 
 
 
@@ -281,7 +280,7 @@ play = function(catIndex) {
 
     }
     geusses = [];
-      lives = 10;
+      lives = 6;
       counter = 0;
       space = 0;
       result();
@@ -295,30 +294,6 @@ play = function(catIndex) {
 
 
   playLevel(catIndex);
-
-  // Hint
-
-  // hint.onclick = function() {
-
-
-  //   switch (catIndex) {
-  //     case 0:
-  //       showClue.innerHTML = "Clue: - " + selectedElement.getHint();
-  //       break;
-  //     case 1:
-
-  //       break;
-  //     case 2:
-  //       var divHtml = document.getElementById('hintDiv');
-
-  //       divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
-
-  //       break;
-  //   }
-
-  // };
-
-  // play next
 
   playNext.onclick = function() {
     correct.parentNode.removeChild(correct);
@@ -361,9 +336,32 @@ document.getElementById("seekbar-container").innerHTML="";
  play(categoryId);
 
 }
-window.onload = function() {
+
+function celebration() {
+  $('.winning').css('display','block');
+    $('.winning').animate({
+        opacity: 1,
+        fontSize: '500%'
+    }, 300);
+
+    setTimeout(function(){
+        $('.winning').animate({
+            opacity: 0,
+            fontSize: '200%'
+        }, 500);
+        
+        $('.winning span').animate({
+            top: '38%'
+        });
+    }, 1000);
+    setTimeout(function(){
+      $('.winning').css('display','none');
+    },1600);
+}
+
+
+window.onload = function()
+{
   $('#divCon #a2').hide();
   $('#divCon #a1').show();
-
-
 }

@@ -139,10 +139,10 @@ $.extend(Seekbar.Seekbar.prototype, {
         if(this.orientation == 'horizontal'){
 
             this.elNegative.css({
-                "left" : this.valueArea.min, top: barPos, height: this.barSize
+                "left" : this.valueArea.min, top: barPos, height: this.barSize , width:"100%"
             });
             this.elPositive.css({
-                "left" : this.valueArea.min, top: barPos, height: this.barSize
+                "left" : this.valueArea.min, top: barPos, height: this.barSize , width:"100%"
             });
         }else{
 
@@ -178,6 +178,8 @@ $.extend(Seekbar.Seekbar.prototype, {
         var pos = this.getValuePos();
 
         if(this.orientation == 'horizontal'){
+            console.log("Position:"+pos);
+            console.log("Position:"+this.valueArea.size);
             this.elNegative.css("width", pos);
             this.elPositive.css({ "left" : pos + this.valueArea.min, "width": this.valueArea.size - pos});
 
