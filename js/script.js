@@ -39,16 +39,16 @@ play = function(catIndex) {
     new element("Object", "default parent of all classes")
   ];
 
-  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'itemName', '=', 'sofa'], "room.jpg"),
-    new element(['select', 'bird', 'from', 'birds', 'where', 'color', '=', 'blue'], "bird.jpg"),
-    new element(['select', '*', 'from', 'SolarSystem', 'where', 'id', '<', '4'], "solarSystem.jpg"),
-    new element(['select', '*', 'from', 'pencilCase'], "pencilCase.jpg"),
-    new element(['insert', 'into', 'room', 'values', '(', 'lamp', ')'], "room.jpg"),
-    new element(['update', 'birds', 'set', 'birdColor', '=', 'red', 'where', 'id', '=', '1'], "bird.jpg"),
-    new element(['insert', 'into', 'SolarSystem', 'values', '(', '6', ',', 'Saturn', ')'], "solarSystem.jpg"),
-    new element(['update', 'pencilCase', 'set', 'pencolor', '=', 'pink', 'where', 'Id', '=', '1'], "pencilCase.jpg"),
-    new element(['insert', 'into', 'Zoo', 'values', '(', 'kangaroo', ')'], "zoo.jpg"),
-    new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "zoo.jpg")
+  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'itemName', '=', 'sofa'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['select', 'bird', 'from', 'birds', 'where', 'color', '=', 'blue'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['select', '*', 'from', 'SolarSystem', 'where', 'id', '<', '4'], "<img src='img/hints/solar-hidden.jpg' class='image-responsive'/>"),
+    new element(['select', '*', 'from', 'pencilCase'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'room', 'values', '(', 'lamp', ')'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['update', 'birds', 'set', 'birdColor', '=', 'red', 'where', 'id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'SolarSystem', 'values', '(', '6', ',', 'Saturn', ')'], "<img src='img/hints/solar-normal.jpg' class='image-responsive'/>"),
+    new element(['update', 'pencilCase', 'set', 'pencolor', '=', 'pink', 'where', 'Id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'Zoo', 'values', '(', 'kangaroo', ')'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>"),
+    new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>")
   ];
 
   sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'values', 'itemName', 'room', 'update', 'set', 'lamp',
