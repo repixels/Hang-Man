@@ -1,15 +1,8 @@
+var seekbar;
+
 play = function(catIndex) {
 
 
-  var seekbar = new Seekbar.Seekbar({
-    renderTo: "#seekbar-container",
-    minValue: 0,
-    maxValue: 100,
-    valueListener: function(value) {
-      this.setValue(Math.round(value));
-
-    }
-  });
 
   //element
   function element(word, hint) {
@@ -64,7 +57,7 @@ play = function(catIndex) {
 
   var htmlWords = [
     new element(["&lt;h1&gt;", "My First", " Heading 1", "&lt;/h1&gt;", "&lt;p&gt;", "My first", "paragraph", "&lt;/p&gt;"], "<h1>My First Heading</h1><p>This is a paragraph.</p>"),
-    new element(["&lt;", "src=IMAGE_URL", "img", "&gt;"], "<img src='img/2.png' width='100px' height='100%' >"),
+    new element(["&lt;", "img", "src=IMAGE_URL", "&gt;"], "<img src='img/2.png' width='100px' height='100%' >"),
     new element(["&lt;h2&gt;", "This is heading 2", "&lt;/h2&gt;"], "<h2>This is heading 2</h2>"),
     new element(["&lt; ", "h1", "style='color:red;'", "&gt;", "I am red", "&lt;/h1&gt;", "style='color:blue;'", "I am blue"], "<h1 style='color:red;'>I am red</h1><h1 style='color:blue;'>I am blue</h1>"),
     new element(["&lt;p&gt;", "This text is", "normal", "&lt;b&gt;", "This text is", " bold", "&lt;/b&gt;", "&lt;/p&gt;"], "<p>This text is normal</p><p><b>This text is bold</b></p>"),
@@ -73,28 +66,28 @@ play = function(catIndex) {
     new element(["&lt;h2&gt;", "HTML", "&lt;mark&gt;", " marked", "&lt;/mark&gt;", " Formatting", "&lt;/h2&gt;"], "<h2>HTML <mark>Marked</mark> Formatting</h2>"),
     new element(["&lt;p&gt;", "My favorite color is ", "&lt;del&gt;", "blue", "&lt;/del&gt;", " red", "&lt;/p&gt;"], "<p>My favorite color is <del>blue</del> red</p>"),
     new element(["&lt;ul&gt;", "&lt;li&gt;", "Coffee", "Tea", "Milk", "&lt;/li&gt;", "&lt;/ul&gt;"], "<ul><li>Coffee</li><li>Tea</li><li>Milk</li></ul>  "),
-    new element(["&lt;", "ol type='I'", "&lt;", "Coffee", "&lt;li&gt;", "Tea", "Milk", "&lt;/li&gt;", "&lt;/ol&gt;"], "<ol type='I'><li>Coffee</li><li>Tea</li><li>Milk</li></ol>  ")
+    new element(["&lt;", "ol type='I'", "&gt;",  "&lt;li&gt;","Coffee", "Tea", "Milk", "&lt;/li&gt;", "&lt;/ol&gt;"], "<ol type='I'><li>Coffee</li><li>Tea</li><li>Milk</li></ol>  ")
   ];
 
   var htmlAlphapet = [
-    ["&lt;Heading>", "&lt;h1>", "My First", " Heading 1", "&lt;/Heading>", "&lt;/h1>", "&lt;b>", "My first", "&lt;p>", "paragraph", "&lt;/b>", "&lt;/p>"],
+    ["&lt;Heading>", "&lt;h1>", "My First", " Heading 1", "&lt;/Heading>", "&lt;/h1>", "&lt;b>", "&lt;p>", "paragraph", "&lt;/b>", "&lt;/p>"],
     ["src=IMAGE_URL", "photo", "&lt;", "image", "source=IMAGE_URL", "picture", ">", "img"],
     ["&lt;h1>", "This is heading 2", "&lt;/h1>", "&lt;h2>", "&lt;Heading>", "&lt;/h2>", "&lt;/Heading>"],
     ["&lt; ", "style='color:green;'", "style='color:red;'", ">", "h1", "I am red", "&lt;/h1>", "style='color:blue;'", "I am blue", "style='color:black;'", "I am black", "I am green", "I am yellow"],
     ["&lt;/p>", "&lt;bold>", "&lt;/b>", "&lt;p>", " bold", "&lt;/bold>", "This text is", "normal", "&lt;b>", "&lt;italic>", "This text is", "&lt;/italic>", "&lt;i>", "&lt;/i>"],
     [" a link", "&lt; ", "&lt;link>", "&lt;/a>", "a href='http://www.w3schools.com'", ">", "&lt;/link>", "&lt;goto>", "&lt;/goto>", "This is", "&lt;a src='Link_url'"],
-    ["&lt;bold>", "&lt;p>", "&lt;/p>", "&lt;/bold>", "&lt;i>", "italic", "&lt;italic>", "This text is", "&lt;/i>", "&lt;/italic>", "&lt;b>", "&lt;/b>", "&lt;/p>"],
+    ["&lt;bold>", "&lt;p>", "&lt;/p>", "&lt;/bold>", "&lt;i>", "italic", " normal", "&lt;italic>", "This text is", "&lt;/i>", "&lt;/italic>", "&lt;b>", "&lt;/b>", "&lt;/p>"],
     [" marked", "&lt;select>", "HTML", "&lt;h2>", "&lt;/mark>", "&lt;/select>", "&lt;highlight>", "&lt;mark>", "&lt;/highlight>", " Formatting", "&lt;/h2>"],
     ["&lt;/p>", "My favorite color is ", " red", "blue", "&lt;delete>", "&lt;p>", "&lt;del>", "&lt;/delete>", "&lt;/del>", "&lt;remove>", "&lt;/remove>"],
     ["&lt;/ul>", "Coffee", "&lt;ol>", "Tea", "&lt;list>", "&lt;li>", "&lt;/li>", "&lt;/list>", "&lt;unorderd list>", "&lt;/unorderd list>", "Milk", "&lt;Ordered list>", "&lt;ul>", "&lt;/Ordered list>"],
     ["&lt;ul>", "ol type='I'", "Tea", "&lt;ol>", "&lt;li>", "&lt;list>", "&lt;", "Coffee", "&lt;/list>", "&lt;Ordered list>", "Milk", ">", "&lt;/Ordered list>", "&lt;unorderd list>", "&lt;/li>", "&lt;/unorderd list>", "&lt;/ol>"]
   ];
 
-  categories = new Array();
+  
 
 
 
-  var categories; // Array of topics
+  var categories= new Array();; // Array of topics
   var chosenCategory; // Selected catagory
   var getHint; // Word getHint
   var word; // Selected word
@@ -110,7 +103,7 @@ play = function(catIndex) {
   var showCatagory = document.getElementById("scatagory");
   var getHint = document.getElementById("hint");
   var showClue = document.getElementById("clue");
-
+  var playNext =document.getElementById('next');
 
 
   // create alphabet ul
@@ -177,18 +170,17 @@ play = function(catIndex) {
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
+        
         showLives.innerHTML = "You Win!";
-        if (chosenCategory.length <= 0) {
-          $('#divCon #a2').hide();
-          $('#divCon #a1').show();
+         // showClue.innerHTML = "";
+        $('#next').show();
 
-          alert("you have finished this category (back to categories selection page)");
-        } else {
-          correct.parentNode.removeChild(correct);
-          letters.parentNode.removeChild(letters);
-          showClue.innerHTML = "";
-          play(catIndex);
-        }
+        //   if (chosenCategory.length <= 0) {
+        //     $('#divCon #a2').hide();
+        //     $('#divCon #a1').show();
+
+        // } 
+        
       }
     }
   }
@@ -198,8 +190,26 @@ play = function(catIndex) {
   check = function() {
     list.onclick = function() {
       var geuss = (this.innerHTML);
+      var strike;
+          var element1;
+
+          strike=  document.createElement('span');
+          strike.setAttribute('style','color:red;text-decoration:line-through');
+
+        element1= document.createElement('span');
+        element1.setAttribute('style','color:black');
       this.setAttribute("class", "active");
       this.onclick = null;
+      // var x=document.createTextNode(this.innerHTML);
+      var strikedElement=document.createElement('p');
+      strikedElement.setAttribute('style','font-size:16px;');
+      strikedElement.innerHTML = this.innerHTML;
+
+    this.innerHTML='';
+
+   this.appendChild(strike);
+   strike.appendChild(element1);
+   element1.appendChild(strikedElement);
       for (var i = 0; i < word.length; i++) {
         if (word[i].toUpperCase() === geuss.toUpperCase()) {
           geusses[i].innerHTML = geuss;
@@ -218,16 +228,17 @@ play = function(catIndex) {
     }
   }
 
-
-  // Play
-  play = function(categoryIndex) {
-
-    seekbar.setValue(0);
-    // alphabet = sqlAlphabet;
-    categories.push(javaWords);
+ categories.push(javaWords);
     categories.push(sqlWords);
     categories.push(htmlWords);
 
+
+  // Play
+  playLevel = function(categoryIndex) {
+
+    seekbar.setValue(0);
+    // alphabet = sqlAlphabet;
+    $('#next').hide();
 
     chosenCategory = categories[categoryIndex]; //Math.floor(Math.random() * categories.length)];
 
@@ -235,7 +246,7 @@ play = function(catIndex) {
     if (chosenCategory.length > 0) {
       var size = (chosenCategory.length > 10) ? 10 : chosenCategory.length;
 
-      var index = Math.floor(Math.random() * size); 
+      var index = Math.floor(Math.random() * size);
 
 
       selectedElement = chosenCategory[index];
@@ -255,15 +266,15 @@ play = function(catIndex) {
           break;
       }
 
-      //remove current selection from categories 
+      //remove current selection from categories
       chosenCategory.splice(index, 1);
 
 
       word = selectedElement.getWord();
       console.log(word);
-      
 
-      
+
+
     } else {
       $('#divCon #a2').hide();
       $('#divCon #a1').show();
@@ -277,40 +288,56 @@ play = function(catIndex) {
       comments();
       selectCat();
       buttons();
+      var catagoryIndex = categories.indexOf(chosenCategory);
+      var hintIndex = chosenCategory.indexOf(word);
+      showClue.innerHTML = selectedElement.getHint();
   }
 
-  play(catIndex);
+
+  playLevel(catIndex);
 
   // Hint
 
-  hint.onclick = function() {
+  // hint.onclick = function() {
 
 
-    switch (catIndex) {
-      case 0:
-        showClue.innerHTML = "Clue: - " + selectedElement.getHint();
-        break;
-      case 1:
+  //   switch (catIndex) {
+  //     case 0:
+  //       showClue.innerHTML = "Clue: - " + selectedElement.getHint();
+  //       break;
+  //     case 1:
 
-        break;
-      case 2:
-        var divHtml = document.getElementById('hintDiv');
+  //       break;
+  //     case 2:
+  //       var divHtml = document.getElementById('hintDiv');
 
-        divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
+  //       divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
 
-        break;
+  //       break;
+  //   }
+
+  // };
+
+  // play next
+
+  playNext.onclick = function() {
+    correct.parentNode.removeChild(correct);
+    letters.parentNode.removeChild(letters);
+
+    //change text if this is last level 
+    if(chosenCategory.length===1){
+      playNext.innerHTML="next Category";
     }
+    else{playNext.innerHTML="Play Next";}
 
-  };
-
-  // Reset
-
-  // document.getElementById('reset').onclick = function() {
-  //   correct.parentNode.removeChild(correct);
-  //   letters.parentNode.removeChild(letters);
-  //   showClue.innerHTML = "Clue: - ";
-  //   play(catIndex);
-  // }
+    if(chosenCategory.length>0){
+      playLevel(catIndex);
+    }
+    else{
+      $('#divCon #a2').hide();
+      $('#divCon #a1').show();
+    }
+  }
 }
 
 
@@ -318,8 +345,20 @@ function showData(categoryId) {
   $('#divCon #a1').slideUp(700);
   $('#divCon #a2').slideDown(400);
 
-  //              alert("show" + categoryId);
-                play(categoryId);
+//reset seekbar container 
+document.getElementById("seekbar-container").innerHTML=""; 
+//initialize new seekbar
+   seekbar   = new Seekbar.Seekbar({
+        renderTo: "#seekbar-container",
+        minValue: 0,
+        maxValue: 100,
+        valueListener: function(value) {
+          this.setValue(Math.round(value));
+
+        }
+      });
+
+ play(categoryId);
 
 }
 window.onload = function() {
