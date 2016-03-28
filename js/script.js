@@ -1,9 +1,6 @@
 var seekbar;
 
 play = function(catIndex) {
-
-
-
   //element
   function element(word, hint) {
     this.word = word;
@@ -170,17 +167,8 @@ play = function(catIndex) {
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        
-        showLives.innerHTML = "You Win!";
-         // showClue.innerHTML = "";
+        celebration();
         $('#next').show();
-
-        //   if (chosenCategory.length <= 0) {
-        //     $('#divCon #a2').hide();
-        //     $('#divCon #a1').show();
-
-        // } 
-        
       }
     }
   }
@@ -296,30 +284,6 @@ play = function(catIndex) {
 
   playLevel(catIndex);
 
-  // Hint
-
-  // hint.onclick = function() {
-
-
-  //   switch (catIndex) {
-  //     case 0:
-  //       showClue.innerHTML = "Clue: - " + selectedElement.getHint();
-  //       break;
-  //     case 1:
-
-  //       break;
-  //     case 2:
-  //       var divHtml = document.getElementById('hintDiv');
-
-  //       divHtml.innerHTML = selectedElement.getHint(); //"<h1 style='color:red;'>"+ "This is heading 2"+ "</h1>";
-
-  //       break;
-  //   }
-
-  // };
-
-  // play next
-
   playNext.onclick = function() {
     correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
@@ -361,9 +325,32 @@ document.getElementById("seekbar-container").innerHTML="";
  play(categoryId);
 
 }
-window.onload = function() {
+
+function celebration() {
+  $('.winning').css('display','block');
+    $('.winning').animate({
+        opacity: 1,
+        fontSize: '500%'
+    }, 300);
+
+    setTimeout(function(){
+        $('.winning').animate({
+            opacity: 0,
+            fontSize: '200%'
+        }, 500);
+        
+        $('.winning span').animate({
+            top: '38%'
+        });
+    }, 1000);
+    setTimeout(function(){
+      $('.winning').css('display','none');
+    },1600);
+}
+
+
+window.onload = function()
+{
   $('#divCon #a2').hide();
   $('#divCon #a1').show();
-
-
 }

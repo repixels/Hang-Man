@@ -1,3 +1,15 @@
+@font-face{
+  font-family: aleo-regular;
+  src: url('../fonts/aleo-regular-webfont.ttf');
+
+}
+
+@font-face{
+  font-family: sunshine;
+  src: url('../fonts/A little sunshine.ttf');
+
+}
+
 /* Variabes */
 /* Mixin's */
 body {
@@ -65,6 +77,10 @@ p {
 }
 
 #alphabet li {
+  font-family: sunshine;
+  font-weight: bolder;
+  font-size: 40px;
+  padding-bottom: 60px;
   float: left;
   margin: 0 10px 10px 0;
   list-style: none;
@@ -151,6 +167,36 @@ button:hover {
   background: #fff;
   border: solid 1px #fff;
   color: #c1d72e;
+}
+
+.winning-container{
+  margin: 0;
+  padding: 0;
+}
+
+.winning {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #66aaff;
+    font-size: 600%;
+    opacity: 0;
+    z-index: 999;
+    margin: 0 auto;
+    display: none;
+}
+.winning span {
+    position: relative;
+    display: block;
+    top: 40%;
+    width: 100%;
+    padding: .35em 1.6em;
+    background-color: rgba(255, 255, 255, .2);
+    text-align: center;
+    font-family: sans-serif;
+    color: #fff;
+    z-index: 9999;
+    text-shadow: 2px 2px #2c3e50;
 }
 
 @media (max-width: 767px) {
