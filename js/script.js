@@ -146,7 +146,7 @@ play = function(catIndex) {
         guess.innerHTML = "-";
         space = 1;
       } else {
-        guess.innerHTML = "_";
+        guess.innerHTML = "______";
       }
 
       geusses.push(guess);
@@ -157,13 +157,12 @@ play = function(catIndex) {
 
   // Show lives
   comments = function() {
-    showLives.innerHTML = "You have " + lives + " lives";
+    
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
       //  alert("game over action");
       $('#divCon #a2').hide();
       $('#divCon #a1').show();
-      //
     }
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
@@ -190,7 +189,7 @@ play = function(catIndex) {
       this.onclick = null;
       // var x=document.createTextNode(this.innerHTML);
       var strikedElement=document.createElement('p');
-      strikedElement.setAttribute('style','font-size:16px;');
+      strikedElement.setAttribute('class','stripped-text');
       strikedElement.innerHTML = this.innerHTML;
 
     this.innerHTML='';
@@ -207,7 +206,11 @@ play = function(catIndex) {
         }
       }
       var j = (word.indexOf(geuss));
-      if (j === -1) {
+      if (j === -1)
+      {
+        $('#heart'+lives).removeClass('heart');
+        $('#heart'+lives).addClass('end');
+
         lives -= 1;
         comments();
       } else {
@@ -260,6 +263,14 @@ play = function(catIndex) {
 
       word = selectedElement.getWord();
       console.log(word);
+      var livesDiv = document.getElementById('lives');
+      livesDiv.innerHTML="";
+      for (var i = 1; i <= 6; i++) {
+      var heart = document.createElement('div')
+      heart.setAttribute('class','heart');
+      heart.setAttribute('id','heart'+i)
+      livesDiv.appendChild(heart)
+    }
 
 
 
@@ -269,7 +280,7 @@ play = function(catIndex) {
 
     }
     geusses = [];
-      lives = 10;
+      lives = 6;
       counter = 0;
       space = 0;
       result();
