@@ -65,7 +65,7 @@ $.extend(Seekbar.Seekbar.prototype, {
 
 
     render:function(){
-        this.el = $('<div class="dhtmlgoodies-seekbar" style="position:relative;width:100%;height:100%"></div>');
+        this.el = $('<div class="dhtmlgoodies-seekbar" style="position:relative;height:100%"></div>');
 
         this.renderTo.append(this.el);
 
@@ -73,7 +73,7 @@ $.extend(Seekbar.Seekbar.prototype, {
         this.area.height = this.el.height();
         this.area.size = Math.max(this.area.width, this.area.height);
 
-        this.orientation = this.area.width >= this.area.height ? 'horizontal' : 'vertical';
+        this.orientation = this.area.width >= this.area.height ? 'horizontal' : 'horizontal';
 
         this.elNegative = $('<div class="seekbar-negative" style="position:absolute;z-index:1" ></div>');
         this.elPositive = $('<div class="seekbar-positive" style="position:absolute;z-index:1" ></div>');
@@ -88,7 +88,7 @@ $.extend(Seekbar.Seekbar.prototype, {
 
         this.thumb = $('<div style="position:absolute;z-index:2"></div>');
         this.thumbInner = $('<div class="seekbar-thumb-needle" style="position:absolute;z-index:2;"></div>');
-        this.thumbOuter = $('<div id="myNeedle" class="seekbar-thumb" style="position:absolute;z-index:2;width:100%;height:100%;margin-left:10px;background-size:contain;background-image:url('+"'img/rocket.png'"+');background-repeat:no-repeat;"></div>');
+        this.thumbOuter = $('<div id="myNeedle" class="seekbar-thumb" style="position:absolute;z-index:2;height:100%;margin-left:10px;background-size:contain;background-image:url('+"'img/rocket.png'"+');background-repeat:no-repeat;"></div>');
 
 		
         this.updateAlpha();
@@ -133,16 +133,16 @@ $.extend(Seekbar.Seekbar.prototype, {
 
         this.valueArea.min = this.thumbSize / 2;
         this.valueArea.max = size - this.thumbSize / 2;
-        this.valueArea.size = this.valueArea.max - this.valueArea.min;
+        this.valueArea.size = $('.container').width() - 50;
 
         var barPos = (this.thumbSize / 2) - (this.barSize / 2);
         if(this.orientation == 'horizontal'){
 
             this.elNegative.css({
-                "left" : this.valueArea.min, top: barPos, height: this.barSize , width:"100%"
+                "left" : this.valueArea.min, top: barPos, height: this.barSize
             });
             this.elPositive.css({
-                "left" : this.valueArea.min, top: barPos, height: this.barSize , width:"100%"
+                "left" : this.valueArea.min, top: barPos, height: this.barSize
             });
         }else{
 
