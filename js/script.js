@@ -36,21 +36,13 @@ play = function(catIndex) {
     new element("Object", "default parent of all classes")
   ];
 
-  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'itemName', '=', 'sofa'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['select', 'bird', 'from', 'birds', 'where', 'color', '=', 'blue'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['select', '*', 'from', 'SolarSystem', 'where', 'id', '<', '4'], "<img src='img/hints/solar-hidden.jpg' class='image-responsive'/>"),
-    new element(['select', '*', 'from', 'pencilCase'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['insert', 'into', 'room', 'values', '(', 'lamp', ')'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['update', 'birds', 'set', 'birdColor', '=', 'red', 'where', 'id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['insert', 'into', 'SolarSystem', 'values', '(', '6', ',', 'Saturn', ')'], "<img src='img/hints/solar-normal.jpg' class='image-responsive'/>"),
-    new element(['update', 'pencilCase', 'set', 'pencolor', '=', 'pink', 'where', 'Id', '=', '1'], "<img src='img/hints/room-normal.jpg' class='image-responsive'/>"),
-    new element(['insert', 'into', 'Zoo', 'values', '(', 'kangaroo', ')'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>"),
-    new element(['select', 'count', '(', 'animal', ')', 'from', 'Zoo', 'having', 'level', '=', '1'], "<img src='img/hints/zoo-hidden.jpg' class='image-responsive'/>")
+  var sqlWords = [new element(['select', 'item', 'from', 'room', 'where', 'furniture', '=', 'sofa'], "<img id='hint-image' src='img/hints/room-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'SolarSystem', '(', 'Planet', ')' , 'values', '(', 'Saturn', ')'], "<img id='hint-image' src='img/hints/solar-normal.jpg' class='image-responsive'/>"),
+    new element(['insert', 'into', 'Zoo', 'values', '(', 'Animal', ')' ,'(', 'Lion', ')'], "<img id='hint-image' src='img/hints/zoo-hidden.jpg' class='image-responsive'/>"),
   ];
 
-  sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'values', 'itemName', 'room', 'update', 'set', 'lamp',
-    'where', '=', 'bird', 'item', 'sofa', 'level', '1', '4', 'purple', 'count', '(', ')', 'animal', 'birds', 'bird', 'color', 'blue', 'red', 'door', 'SolarSystem', '*', 'pencilCase'
-  ];
+  sqlAlphabet = ['select', 'from', 'having', 'Zoo', 'insert', 'into', 'values', 'furniture', 'room', 'update', 'set', 'lamp',
+    'where', '=', 'planet' , 'item', 'sofa', 'level', 'purple',  '(', ')', 'Animal', 'Saturn' ,  'Lion' , 'door', 'SolarSystem'];
 
   var htmlWords = [
     new element(["&lt;h1&gt;", "My First", " Heading 1", "&lt;/h1&gt;", "&lt;p&gt;", "My first", "paragraph", "&lt;/p&gt;"], "<h1>My First Heading</h1><p>This is a paragraph.</p>"),
@@ -158,17 +150,37 @@ play = function(catIndex) {
   // Show lives
   comments = function() {
     
+    var hasWon = false;
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
       //  alert("game over action");
       $('#divCon #a2').hide();
       $('#divCon #a1').show();
     }
+
     for (var i = 0; i < geusses.length; i++) {
       if (counter + space === geusses.length) {
-        celebration();
-        $('#next').show();
+        hasWon = true;
+        
       }
+    }
+    if(hasWon)
+    {
+      celebration();
+      if($('#hint-image').attr('src') === "img/hints/room-normal.jpg")
+      {
+        $('#hint-image').attr('src' , "img/hints/room-selected.jpg");
+      }
+      else if($('#hint-image').attr('src') === "img/hints/solar-normal.jpg")
+      {
+        $('#hint-image').attr('src', "img/hints/solar-selected.jpg");
+      }
+      else if($('#hint-image').attr('src') === "img/hints/zoo-hidden.jpg")
+      {
+        $('#hint-image').attr('src', "img/hints/zoo-normal.jpg");
+      }
+      $('#next').show();
+      hasWon = false;
     }
   }
 
