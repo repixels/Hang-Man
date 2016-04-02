@@ -377,3 +377,18 @@ window.onload = function()
   $('#divCon #a2').hide();
   $('#divCon #a1').show();
 }
+
+$( window ).resize(
+  function() {
+    document.getElementById("seekbar-container").innerHTML=""; 
+ seekbar = new Seekbar.Seekbar({
+        renderTo: "#seekbar-container",
+        minValue: 0,
+        maxValue: 100,
+        valueListener: function(value) {
+          this.setValue(Math.round(value));
+
+        }
+      });
+}
+);
